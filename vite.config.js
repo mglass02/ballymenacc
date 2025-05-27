@@ -1,22 +1,17 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
+// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-  ],
+  plugins: [react()],
   build: {
-    // Ensure assets are hashed for cache-busting
-    assetsInlineLimit: 4096, // Default value, keeps small assets inline
+    assetsInlineLimit: 4096,
     rollupOptions: {
       output: {
-        // Add content hashes to filenames
         entryFileNames: 'assets/[name]-[hash].js',
         chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash][extname]',
       },
     },
   },
-});
+})
